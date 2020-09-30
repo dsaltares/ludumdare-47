@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'game/**'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2.0.0
+    - name: export
+      uses: firebelley/godot-export@v1.1.0
+      with:
+        base_version: 0.0.1
+        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_linux_headless.64.zip
+        godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.2.2/Godot_v3.2.2-stable_export_templates.tpz
+        godot_template_version: 3.2.2.stable
+        relative_project_path: ./game
+      env:
+        GITHUB_TOKEN: ${{ secrets.EXPORT_GITHUB_TOKEN }}
+
+  publish:
+    needs:
+      - export
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux, windows, mac, html5]
+    steps:
+      - name: download build
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          file: ludumdare-47-${{ matrix.platform }}.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: release build
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.platform }}
+          ITCH_GAME: ludumdare-47
+          ITCH_USER: dsaltares
+          PACKAGE: ludumdare-47-${{ matrix.platform }}.zip
