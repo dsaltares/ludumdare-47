@@ -99,6 +99,7 @@ new_run={
 3d_physics/layer_1="environment"
 3d_physics/layer_2="player"
 3d_physics/layer_3="ghosts"
+3d_physics/layer_4="triggers"
 
 [rendering]
 

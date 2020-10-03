@@ -5,7 +5,9 @@
 [ext_resource path="res://Ghosts/Ghost.tres" type="Material" id=4]
 [ext_resource path="res://Ghosts/Ghost.gd" type="Script" id=5]
 
-[node name="Ghost" type="KinematicBody"]
+[node name="Ghost" type="KinematicBody" groups=[
+"ghosts",
+]]
 collision_layer = 4
 script = ExtResource( 5 )
 

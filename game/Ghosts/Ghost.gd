@@ -31,4 +31,5 @@ func _physics_process(delta: float) -> void:
 		snap_vec = Vector3.ZERO
 		
 	velocity = move_and_slide_with_snap(velocity, snap_vec, Vector3.UP)
+	transform.origin.z = 0
 	

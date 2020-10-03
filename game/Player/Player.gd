@@ -96,3 +96,4 @@ func _update_look_dir() -> void:
 
 func _move() -> void:
 	velocity = move_and_slide_with_snap(velocity, snap_vec, Vector3.UP)
+	transform.origin.z = 0
