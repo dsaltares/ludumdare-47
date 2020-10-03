@@ -18,7 +18,3 @@ func _on_Area_body_entered(body):
 func _on_Area_body_exited(body):
 	$AnimationPlayer.play_backwards("Activation")
 	emit_signal("pressure_plate_deactivated")
-
-
-func _on_pressure_plate_activated():
-	pass # Replace with function body.
