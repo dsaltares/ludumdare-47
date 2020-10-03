@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Environment/MovingPlatform.gd" type="Script" id=2]
+
+[node name="Platform" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="." index="2"]
+repeat = true
+playback/repeat = true
