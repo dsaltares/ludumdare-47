@@ -13,6 +13,10 @@ var velocity := Vector3.ZERO
 var dead := false
 var pressed_jump := false
 var snap_vec := Vector3.DOWN
+var was_grounded := false
+var jumping := false
+
+onready var coyote_timer := $CoyoteTimer
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -34,6 +38,10 @@ func _process(_delta: float) -> void:
 		pressed_jump = true
 
 func _physics_process(delta: float) -> void:
+	var grounded := is_on_floor()
+	
+	if was_grounded and not grounded and not jumping:
+		coyote_timer.start()
 	
 	if move_dir.length_squared() > 0.0:
 		velocity.x += move_dir.x * (MAX_RUNNING_SPEED/TIME_TO_MAX_SPEED) * delta
@@ -44,12 +52,13 @@ func _physics_process(delta: float) -> void:
 		var max_speed = velocity.x if prev_move_dir > 0.0 else 0.0
 		velocity.x -= prev_move_dir * (MAX_RUNNING_SPEED/TIME_TO_MAX_SPEED) * delta
 		velocity.x = clamp(velocity.x, min_speed, max_speed)
-	
-	var grounded := is_on_floor()
-	if grounded and pressed_jump:
+
+	if (grounded or not coyote_timer.is_stopped()) and pressed_jump:
 		var jump_speed = 2 * JUMP_HEIGHT * MAX_RUNNING_SPEED / DISTANCE_TO_PEAK
 		velocity.y = jump_speed
 		snap_vec = Vector3.ZERO
+		coyote_timer.stop()
+		jumping = true
 	elif not grounded:
 		var jump_section_distance = DISTANCE_TO_PEAK if velocity.y > 0.0 else DISTANCE_AFTER_PEAK
 		gravity = -2 * JUMP_HEIGHT * pow(MAX_RUNNING_SPEED, 2) / pow(jump_section_distance, 2)
@@ -57,13 +66,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		snap_vec = Vector3.DOWN
 		velocity.y = -0.1
-	
-	if pressed_jump:
-		print('pressed_jump: ', pressed_jump)
-		print('grounded: ', grounded)
-		print('velocity: ', velocity)
-		print('gravity: ', gravity)
-	
-	pressed_jump = false
+		jumping = false
 		
 	velocity = move_and_slide_with_snap(velocity, snap_vec, Vector3.UP)
+	
+	pressed_jump = false
+	was_grounded = grounded
