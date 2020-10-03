@@ -3,6 +3,7 @@ extends KinematicBody
 export var idle_duration := 1.0
 export var move_to := Vector3.RIGHT * 3
 export var time := 2.0
+export var active := true
 
 onready var tween := $Tween
 
@@ -33,8 +34,12 @@ func init_tween() -> void:
 		Tween.EASE_IN_OUT,
 		idle_duration + time
 	)
-	tween.start()
 	
 func _physics_process(delta: float) -> void:
 	translation = translation.linear_interpolate(follow, 0.075)
 
+func _on_pressure_plate_activated():
+	tween.resume_all()
+
+func _on_pressure_plate_deactivated():
+	tween.stop_all()
