@@ -25,12 +25,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.6, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0 )
 idle_duration = 0.0
 move_to = Vector3( 0, -2, 0 )
+connected_to_button = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.1, 0 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10143, 12.4153 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11858, 1.10143, 12.4153 )
+
+[node name="Ghosts" type="Spatial" parent="."]
 [connection signal="pressure_plate_activated" from="Environment/PressurePlate" to="Environment/Door" method="_on_pressure_plate_activated"]
 [connection signal="pressure_plate_activated" from="Environment/PressurePlate" to="Environment/Platform" method="_on_pressure_plate_activated"]
 [connection signal="pressure_plate_deactivated" from="Environment/PressurePlate" to="Environment/Door" method="_on_pressure_plate_deactivated"]

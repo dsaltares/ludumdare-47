@@ -42,8 +42,8 @@ material/0 = null
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0 )
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, 0 )

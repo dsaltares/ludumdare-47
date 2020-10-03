@@ -3,6 +3,7 @@ extends KinematicBody
 export var idle_duration := 1.0
 export var move_to := Vector3.RIGHT * 3
 export var time := 2.0
+export var connected_to_button = false
 
 onready var tween := $Tween
 
@@ -34,7 +35,7 @@ func init_tween() -> void:
 		idle_duration + time
 	)
 	
-	if !is_connected("pressure_plate_activated", self, "_on_pressure_plate_activated"):
+	if !connected_to_button:
 		tween.start()
 	
 func _physics_process(delta: float) -> void:
