@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Environment/Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Level/Level.gd" type="Script" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment/Ground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Environment/MovingPlatform.tscn" type="PackedScene" id=8]
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2822, 0, 0 )
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="MovingPlatform" parent="Environment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77242, 2.88622, 0 )
+
+[node name="MovingPlatform2" parent="Environment" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96998, 2.88622, 0 )
+move_to = Vector3( 0, 3, 0 )
+
+[node name="Platform2" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.12596, 2.98693, 0 )
+
+[node name="Platform3" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.10988, 6.37467, 0 )
+
+[node name="Platform4" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.04324, 6.37467, 0 )
+
+[node name="Ground" parent="Environment" instance=ExtResource( 7 )]
+
+[node name="Ghosts" type="Spatial" parent="."]
