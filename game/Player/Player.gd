@@ -1,4 +1,5 @@
 extends KinematicBody
+class_name Player
 
 const MAX_RUNNING_SPEED := 10.0
 const MAX_FALLING_SPEED := 20.0
@@ -10,7 +11,6 @@ const DISTANCE_AFTER_PEAK := 3.0
 var move_dir := Vector3.ZERO
 var gravity := 0.0
 var velocity := Vector3.ZERO
-var dead := false
 var pressed_jump := false
 var snap_vec := Vector3.DOWN
 var was_grounded := false
@@ -19,15 +19,6 @@ var jumping := false
 onready var coyote_timer := $CoyoteTimer
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-		
-	if Input.is_action_just_pressed("restart"):
-		var _ret = get_tree().reload_current_scene()
-		
-	if dead:
-		return
-		
 	move_dir = Vector3.ZERO
 	if Input.is_action_pressed("move_right"):
 		move_dir += Vector3.RIGHT
