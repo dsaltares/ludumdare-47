@@ -4,7 +4,8 @@ class_name Ghost
 enum States {
 	START,
 	PLAYING_RECORDING,
-	IDLE
+	IDLE,
+	DISSOLVING,
 }
 
 const GRAVITY = -10.0
@@ -14,6 +15,7 @@ const PLAYER_LAYER = 2
 const GHOSTS_LAYER = 4
 
 onready var become_solid_timer := $BecomeSolidTimer
+onready var dissolve_timer := $DissolveTimer
 onready var mesh := $Body
 
 var state = States.START
@@ -31,11 +33,10 @@ func init(_recording) -> void:
 	global_transform = recording.transforms[0]
 
 func _process(_delta: float) -> void:
-	var amount = become_solid_timer.time_left / become_solid_timer.wait_time
-	mesh.get_surface_material(0).set_shader_param("dissolve_amount", amount)
+	_update_dissolve_amount()
 
 func _physics_process(delta: float) -> void:
-	if  state != States.IDLE:
+	if state == States.START or state == States.PLAYING_RECORDING:
 		var transform : Transform = recording.transforms[current_frame]
 		global_transform = transform
 		current_frame += 1
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 
 	if state == States.IDLE:
 		if recording.killed_at_end:
-			queue_free()
+			dissolve()
 			return
 			
 		collision_layer = GHOSTS_LAYER
@@ -61,8 +62,24 @@ func _physics_process(delta: float) -> void:
 		velocity = move_and_slide_with_snap(velocity, snap_vec, Vector3.UP)
 		transform.origin.z = 0
 
+func dissolve() -> void:
+	state = States.DISSOLVING
+	dissolve_timer.start()
+	collision_layer = 0
+	collision_mask = 0
+
 func _on_BecomeSolidTimer_timeout() -> void:
 	if state == States.START:
 		state = States.PLAYING_RECORDING
 		collision_layer = GHOSTS_LAYER
 		collision_mask = ENVIRONMENT_LAYER + PLAYER_LAYER
+
+func _update_dissolve_amount() -> void:
+	var amount = 0.0
+	
+	if state == States.START:
+		amount = become_solid_timer.time_left / become_solid_timer.wait_time
+	elif state == States.DISSOLVING:
+		amount = 1.0 - dissolve_timer.time_left / dissolve_timer.wait_time
+		
+	mesh.get_surface_material(0).set_shader_param("dissolve_amount", amount)

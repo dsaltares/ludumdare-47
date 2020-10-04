@@ -9,6 +9,7 @@ func _ready() -> void:
 	camera.set_target(level.player)
 	GhostManager.start_recording()
 	connect_level_signals()
+	EventBus.connect("player_kill_started", GhostManager, "pause_recording")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):

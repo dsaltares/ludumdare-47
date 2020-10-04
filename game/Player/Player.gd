@@ -39,6 +39,7 @@ func kill() -> void:
 		state = States.Dying
 		die_timer.start()
 		EventBus.emit_signal("shake_requested")
+		EventBus.emit_signal("player_kill_started")
 
 func _ready() -> void:
 	die_timer.connect("timeout", self, "on_die_timer_timeout")
