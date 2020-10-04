@@ -10,6 +10,7 @@ func _ready() -> void:
 	GhostManager.start_recording()
 	connect_level_signals()
 	EventBus.connect("player_kill_started", GhostManager, "pause_recording")
+	EventBus.connect("player_entered_exit_portal", self, "on_player_entered_exit_portal")
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -20,7 +21,7 @@ func _process(delta: float) -> void:
 		var _ret = get_tree().reload_current_scene()
 		
 	if Input.is_action_just_pressed("new_run"):
-		new_run()
+		level.dissolve_player()
 		
 	if Input.is_action_just_pressed("shake"):
 		EventBus.emit_signal("shake_requested")
@@ -45,3 +46,6 @@ func connect_level_signals() -> void:
 	level.connect("player_looped", self, "new_run")
 	level.connect("player_killed", self, "on_player_killed")
 	level.connect("loop_timeout", self, "new_run")
+
+func on_player_entered_exit_portal() -> void:
+	print("EXIT PORTAL")

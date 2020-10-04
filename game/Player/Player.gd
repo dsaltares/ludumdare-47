@@ -34,8 +34,10 @@ onready var turn_tween := $TurnTween
 onready var graphics := $Graphics
 onready var mesh := $Graphics/Body
 onready var die_sfx := $DieSFX
+onready var dissolve_fx := $DissolveSFX
 onready var jump_sfx := $JumpSFX
 onready var appear_sfx := $AppearSFX
+onready var key_pickup_sfx := $KeyPickupSFX
 
 func kill() -> void:
 	if state != States.Dying:
@@ -45,9 +47,19 @@ func kill() -> void:
 		EventBus.emit_signal("shake_requested")
 		EventBus.emit_signal("player_kill_started")
 
+func dissolve() -> void:
+	if state != States.Dying:
+		state = States.Dying
+		die_timer.start()
+		dissolve_fx.play()
+		EventBus.emit_signal("shake_requested")
+		EventBus.emit_signal("player_kill_started")
+
 func _ready() -> void:
+	EventBus.connect("key_obtained", self, "on_key_obtained")
 	die_timer.connect("timeout", self, "on_die_timer_timeout")
 	appear_timer.connect("timeout", self, "on_appear_timer_timeout")
+	
 
 func _process(_delta: float) -> void:
 	_update_dissolve_amount()	
@@ -151,3 +163,6 @@ func on_appear_timer_timeout() -> void:
 
 func on_die_timer_timeout() -> void:
 	emit_signal("killed")
+
+func on_key_obtained() -> void:
+	key_pickup_sfx.play()
