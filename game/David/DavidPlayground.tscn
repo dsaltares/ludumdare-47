@@ -10,3 +10,4 @@ script = ExtResource( 2 )
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 
 [node name="Level" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2192, -0.963553, -9.33746 )
