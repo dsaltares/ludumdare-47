@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		var _ret = get_tree().reload_current_scene()
 		
 	if Input.is_action_just_pressed("new_run"):
-		new_run()
+		level.dissolve_player()
 		
 	if Input.is_action_just_pressed("shake"):
 		EventBus.emit_signal("shake_requested")

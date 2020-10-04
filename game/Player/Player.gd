@@ -34,6 +34,7 @@ onready var turn_tween := $TurnTween
 onready var graphics := $Graphics
 onready var mesh := $Graphics/Body
 onready var die_sfx := $DieSFX
+onready var dissolve_fx := $DissolveSFX
 onready var jump_sfx := $JumpSFX
 onready var appear_sfx := $AppearSFX
 onready var key_pickup_sfx := $KeyPickupSFX
@@ -43,6 +44,14 @@ func kill() -> void:
 		state = States.Dying
 		die_timer.start()
 		die_sfx.play()
+		EventBus.emit_signal("shake_requested")
+		EventBus.emit_signal("player_kill_started")
+
+func dissolve() -> void:
+	if state != States.Dying:
+		state = States.Dying
+		die_timer.start()
+		dissolve_fx.play()
 		EventBus.emit_signal("shake_requested")
 		EventBus.emit_signal("player_kill_started")
 

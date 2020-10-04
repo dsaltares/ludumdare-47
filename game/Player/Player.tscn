@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/PlayerMaterial.tres" type="Material" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/jump.wav" type="AudioStream" id=7]
 [ext_resource path="res://Player/appear.wav" type="AudioStream" id=8]
 [ext_resource path="res://Player/key_pickup.wav" type="AudioStream" id=9]
+[ext_resource path="res://Player/dissolve.wav" type="AudioStream" id=10]
 
 [node name="Player" type="KinematicBody" groups=[
 "player",
@@ -60,3 +61,6 @@ autoplay = true
 
 [node name="KeyPickupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="DissolveSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
