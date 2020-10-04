@@ -17,9 +17,9 @@ func _ready() -> void:
 		ghost_container.add_child(ghost)
 	
 	player.connect("killed", self, "on_player_killed")
-	loop_trigger.connect("player_entered", self, "on_player_entered")
-	loop_trigger.connect("ghost_entered", self, "on_ghost_entered")
-	loop_timer.connect("timeout", self, "on_loop_timer_timeout")
+#	loop_trigger.connect("player_entered", self, "on_player_entered")
+#	loop_trigger.connect("ghost_entered", self, "on_ghost_entered")
+#	loop_timer.connect("timeout", self, "on_loop_timer_timeout")
 	
 
 func _process(delta: float) -> void:
