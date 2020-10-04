@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Recording",
 "language": "GDScript",
 "path": "res://Ghosts/Recording.gd"
+}, {
+"base": "Spatial",
+"class": "Spikes",
+"language": "GDScript",
+"path": "res://Environment/Spikes.gd"
 } ]
 _global_script_class_icons={
 "Game": "",
 "Ghost": "",
 "Level": "",
 "Player": "",
-"Recording": ""
+"Recording": "",
+"Spikes": ""
 }
 
 [application]

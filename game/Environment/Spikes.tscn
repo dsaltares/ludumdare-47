@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Environment/Spikes.gd" type="Script" id=1]
+[ext_resource path="res://Environment/SpikesMaterial.tres" type="Material" id=2]
+
+[sub_resource type="PrismMesh" id=1]
+size = Vector3( 0.3, 1, 0.2 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.34089, 0.45, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 3, 0.05, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0.960784, 0.0313726, 1 )
+
+[node name="Spikes" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MovingParts" type="Spatial" parent="."]
+
+[node name="Spike" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34492, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike2" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.992658, 0.502134, -7.79629e-05 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike3" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661606, 0.502134, -7.79629e-05 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike4" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322966, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike5" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115091, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike6" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33725, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike7" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659356, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike8" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.981054, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Spike9" type="MeshInstance" parent="MovingParts"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31274, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="MovingParts"]
+collision_mask = 6
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingParts/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
+shape = SubResource( 2 )
+
+[node name="Base" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+[connection signal="body_entered" from="MovingParts/Area" to="." method="_on_Area_body_entered"]

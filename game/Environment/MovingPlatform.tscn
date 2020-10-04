@@ -8,4 +8,5 @@ script = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="." index="2"]
 repeat = true
+playback_process_mode = 0
 playback/repeat = true

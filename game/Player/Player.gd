@@ -38,6 +38,7 @@ func kill() -> void:
 	if state != States.Dying:
 		state = States.Dying
 		die_timer.start()
+		EventBus.emit_signal("shake_requested")
 
 func _ready() -> void:
 	die_timer.connect("timeout", self, "on_die_timer_timeout")
@@ -60,7 +61,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		pressed_jump = true
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
+	if state == States.Dying:
+		return
+		
 	_update_horizontal_velocity(delta)
 	_update_vertical_velocity(delta)
 	_move()
