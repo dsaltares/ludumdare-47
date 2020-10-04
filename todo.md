@@ -6,6 +6,10 @@
   * Laser gun
     * Animated shooting
     * Particles when impacting
+  * Key pick up
+  * Game exit door
+    * Indicates visually when not enough keys
+    * Opens door, shows light, plays sound when enough keys -> go to game end
 * Time loop door
   * Opens when the player gets close
   * Closes when the player goes away
