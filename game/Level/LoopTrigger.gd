@@ -7,6 +7,7 @@ func _ready() -> void:
 	connect("body_entered", self, "on_body_entered")
 	
 func on_body_entered(node : Node) -> void:
+	print("restarting loop")
 	if node.is_in_group("player"):
 		emit_signal("player_entered")
 	

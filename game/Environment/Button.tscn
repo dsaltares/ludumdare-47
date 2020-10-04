@@ -1,10 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Environment/PressurePlate.gd" type="Script" id=1]
+[ext_resource path="res://Environment/Button.gd" type="Script" id=1]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.5
-height = 0.15
+height = 0.25
 
 [sub_resource type="CylinderMesh" id=2]
 height = 0.25
@@ -13,7 +12,6 @@ height = 0.25
 albedo_color = Color( 0.0431373, 0.501961, 0.254902, 1 )
 
 [sub_resource type="CylinderShape" id=4]
-radius = 0.5
 height = 0.65
 
 [sub_resource type="Animation" id=5]
@@ -46,7 +44,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.325, 0 )
 collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.075, 0 )
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
