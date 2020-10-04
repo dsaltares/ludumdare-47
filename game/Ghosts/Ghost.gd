@@ -31,12 +31,8 @@ func init(_recording) -> void:
 	global_transform = recording.transforms[0]
 
 func _process(_delta: float) -> void:
-	if state != States.START:
-		return
-
-	var amount = 1.0 - become_solid_timer.time_left / become_solid_timer.wait_time
-	mesh.get_surface_material(0).set_shader_param("amount", amount)
-
+	var amount = become_solid_timer.time_left / become_solid_timer.wait_time
+	mesh.get_surface_material(0).set_shader_param("dissolve_amount", amount)
 
 func _physics_process(delta: float) -> void:
 	if  state != States.IDLE:
