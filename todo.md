@@ -1,6 +1,3 @@
-* Ghosts do not bother the player
-  * They take a few moments to become solid
-  * Visual indicator
 * Death
     * Player dying
     * Recording death
