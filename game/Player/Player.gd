@@ -26,6 +26,7 @@ var was_grounded := false
 var jumping := false
 var dead := false
 var state = States.Appearing
+var num_keys = 0
 
 onready var coyote_timer := $CoyoteTimer
 onready var appear_timer := $AppearTimer
@@ -36,6 +37,7 @@ onready var mesh := $Graphics/Body
 onready var die_sfx := $DieSFX
 onready var jump_sfx := $JumpSFX
 onready var appear_sfx := $AppearSFX
+onready var key_pickup_sfx := $KeyPickupSFX
 
 func kill() -> void:
 	if state != States.Dying:
@@ -46,8 +48,10 @@ func kill() -> void:
 		EventBus.emit_signal("player_kill_started")
 
 func _ready() -> void:
+	EventBus.connect("key_obtained", self, "on_key_obtained")
 	die_timer.connect("timeout", self, "on_die_timer_timeout")
 	appear_timer.connect("timeout", self, "on_appear_timer_timeout")
+	
 
 func _process(_delta: float) -> void:
 	_update_dissolve_amount()	
@@ -151,3 +155,7 @@ func on_appear_timer_timeout() -> void:
 
 func on_die_timer_timeout() -> void:
 	emit_signal("killed")
+
+func on_key_obtained() -> void:
+	num_keys += 1
+	key_pickup_sfx.play()
