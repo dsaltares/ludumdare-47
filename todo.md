@@ -7,8 +7,6 @@
   * Laser gun
     * Animated shooting
     * Particles when impacting
-* Time limited loop
-  * After a timer ends, create a new loop
 * Time loop door
   * Opens when the player gets close
   * Closes when the player goes away

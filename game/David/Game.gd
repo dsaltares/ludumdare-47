@@ -40,3 +40,4 @@ func connect_level_signals() -> void:
 	level.connect("ready", self, "on_level_ready")
 	level.connect("player_looped", self, "new_run")
 	level.connect("player_killed", self, "on_player_killed")
+	level.connect("loop_timeout", self, "new_run")
