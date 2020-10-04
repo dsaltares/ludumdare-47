@@ -6,8 +6,8 @@
 [resource]
 shader = ExtResource( 2 )
 shader_param/albedo = Color( 0.615686, 0, 1, 1 )
-shader_param/emission_color = Color( 1, 1, 1, 1 )
-shader_param/emission_amount = null
-shader_param/burn_size = null
+shader_param/emission_color = Color( 0.278431, 0.882353, 0.0627451, 1 )
+shader_param/emission_amount = 1.0
+shader_param/burn_size = 0.05
 shader_param/dissolve_amount = 0.0
 shader_param/dissolve_texture = ExtResource( 1 )
