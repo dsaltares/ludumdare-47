@@ -23,7 +23,9 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2.5, 5 )
 }
 
-[node name="Key" type="Spatial"]
+[node name="Key" type="Spatial" groups=[
+"keys",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0760752, 0 )
 script = ExtResource( 1 )
 

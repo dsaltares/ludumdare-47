@@ -26,7 +26,6 @@ var was_grounded := false
 var jumping := false
 var dead := false
 var state = States.Appearing
-var num_keys = 0
 
 onready var coyote_timer := $CoyoteTimer
 onready var appear_timer := $AppearTimer
@@ -157,5 +156,4 @@ func on_die_timer_timeout() -> void:
 	emit_signal("killed")
 
 func on_key_obtained() -> void:
-	num_keys += 1
 	key_pickup_sfx.play()
