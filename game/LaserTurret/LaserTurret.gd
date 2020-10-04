@@ -10,8 +10,5 @@ func _ready() -> void:
 func shoot() -> void:
 	var bullet = BulletScene.instance()
 	bullet.bodies_to_ignore.append(self)
-	print("shooting from: ", shooting_position.global_transform.origin)
-	print("shooting ti: ", shooting_position.global_transform.basis.x)
 	bullet.global_transform.origin = shooting_position.translation
-#	bullet.global_transform.basis = shooting_position.global_transform.basis
 	add_child(bullet)
