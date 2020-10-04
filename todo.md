@@ -1,5 +1,4 @@
 * Juice
-  * Camera shake
   * Player/ghost animation when running/jumping/landing/dying
 * Traps/items
   * Spikes

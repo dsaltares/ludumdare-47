@@ -20,6 +20,9 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("new_run"):
 		new_run()
+		
+	if Input.is_action_just_pressed("shake"):
+		EventBus.emit_signal("shake_requested")
 
 func on_level_ready() -> void:
 	camera.set_target(level.player)

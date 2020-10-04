@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Camera/Camera.gd" type="Script" id=1]
+
+[node name="Camera" type="Camera"]
+transform = Transform( 1, 0, 0, 0, 0.983954, 0.178424, 0, -0.178424, 0.983954, -16.0917, 3.90426, 15.9204 )
+current = true
+script = ExtResource( 1 )
+
+[node name="Frequency" type="Timer" parent="."]
+
+[node name="Duration" type="Timer" parent="."]
+
+[node name="Shake" type="Tween" parent="."]
