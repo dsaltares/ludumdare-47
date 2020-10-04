@@ -33,11 +33,15 @@ onready var die_timer := $DieTimer
 onready var turn_tween := $TurnTween
 onready var graphics := $Graphics
 onready var mesh := $Graphics/Body
+onready var die_sfx := $DieSFX
+onready var jump_sfx := $JumpSFX
+onready var appear_sfx := $AppearSFX
 
 func kill() -> void:
 	if state != States.Dying:
 		state = States.Dying
 		die_timer.start()
+		die_sfx.play()
 		EventBus.emit_signal("shake_requested")
 		EventBus.emit_signal("player_kill_started")
 
@@ -104,6 +108,7 @@ func _update_vertical_velocity(delta : float) -> void:
 		snap_vec = Vector3.ZERO
 		coyote_timer.stop()
 		jumping = true
+		jump_sfx.play()
 	elif not grounded:
 		var jump_section_distance = DISTANCE_TO_PEAK if velocity.y > 0.0 else DISTANCE_AFTER_PEAK
 		gravity = -2 * JUMP_HEIGHT * pow(MAX_RUNNING_SPEED, 2) / pow(jump_section_distance, 2)

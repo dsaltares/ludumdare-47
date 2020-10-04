@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://LaserTurret/Bullet.gd"
+}, {
+"base": "Spatial",
+"class": "BulletHitEffect",
+"language": "GDScript",
+"path": "res://LaserTurret/BulletHitEffect.gd"
+}, {
 "base": "Spatial",
 "class": "Game",
 "language": "GDScript",
@@ -40,6 +50,8 @@ _global_script_classes=[ {
 "path": "res://Spikes/Spikes.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
+"BulletHitEffect": "",
 "Game": "",
 "Ghost": "",
 "Level": "",

@@ -21,9 +21,5 @@
   * End game screen?
 * Gamepad controls
 * Sound effects
-  * Jumping
-  * New time loop
   * Pick up key
   * Door opening/closing
-  * Laser shooting
-  * Laser hitting

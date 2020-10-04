@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://LaserTurret/LaserTurretMaterial.tres" type="Material" id=1]
 [ext_resource path="res://LaserTurret/LaserTurret.gd" type="Script" id=2]
+[ext_resource path="res://LaserTurret/laser.wav" type="AudioStream" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 0.5, 0.2, 0.5 )
@@ -60,3 +61,7 @@ autostart = true
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23001, 0.707722, 0 )
 shape = SubResource( 5 )
+
+[node name="LaserSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 10.0
