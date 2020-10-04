@@ -1,5 +1,5 @@
 * Juice
-  * Player/ghost animation when running/jumping/landing/dying
+  * Player/ghost animation when running/jumping/landing
 * Traps/items
   * Spikes
     * Animated coming out of the ground
