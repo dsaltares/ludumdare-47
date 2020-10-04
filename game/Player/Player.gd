@@ -1,8 +1,6 @@
 extends KinematicBody
 class_name Player
 
-signal killed
-
 enum States {
 	Appearing,
 	Regular,
@@ -42,6 +40,7 @@ onready var key_pickup_sfx := $KeyPickupSFX
 func kill() -> void:
 	if state != States.Dying:
 		state = States.Dying
+		dead = true
 		die_timer.start()
 		die_sfx.play()
 		EventBus.emit_signal("shake_requested")
@@ -53,7 +52,7 @@ func dissolve() -> void:
 		die_timer.start()
 		dissolve_fx.play()
 		EventBus.emit_signal("shake_requested")
-		EventBus.emit_signal("player_kill_started")
+		EventBus.emit_signal("player_dissolve_started")
 
 func _ready() -> void:
 	EventBus.connect("key_obtained", self, "on_key_obtained")
@@ -162,7 +161,10 @@ func on_appear_timer_timeout() -> void:
 	state = States.Regular
 
 func on_die_timer_timeout() -> void:
-	emit_signal("killed")
+	if dead:
+		EventBus.emit_signal("player_killed")
+	else:
+		EventBus.emit_signal("player_dissolved")
 
 func on_key_obtained() -> void:
 	key_pickup_sfx.play()

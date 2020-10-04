@@ -11,6 +11,6 @@ func _ready() -> void:
 func shoot() -> void:
 	var bullet = BulletScene.instance()
 	bullet.bodies_to_ignore.append(self)
-	bullet.global_transform.origin = shooting_position.translation
 	add_child(bullet)
+	bullet.global_transform.origin = shooting_position.global_transform.origin
 	laser_sfx.play()
