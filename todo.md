@@ -1,10 +1,7 @@
 * Juice
   * Player/ghost animation when running/jumping/landing
 * Traps/items
-  * Spikes
-    * Animated coming out of the ground
   * Laser gun
-    * Animated shooting
     * Particles when impacting
   * Key pick up
   * Game exit door
