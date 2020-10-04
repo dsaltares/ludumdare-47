@@ -6,7 +6,6 @@ signal loop_timeout
 
 onready var player := $Player
 onready var ghost_container := $Ghosts
-onready var loop_trigger := $LoopTrigger
 onready var loop_timer := $LoopTimer
 
 func _ready() -> void:
