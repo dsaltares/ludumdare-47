@@ -23,7 +23,6 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, 0 )
 
 [node name="Ghosts" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, 0 )
 
 [node name="Environment" type="Spatial" parent="."]
 
