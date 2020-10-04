@@ -24,9 +24,13 @@ func _process(delta: float) -> void:
 func on_level_ready() -> void:
 	camera.set_target(level.player)
 	GhostManager.start_recording()
+	
+func on_player_killed() -> void:
+	var player_killed = true
+	new_run(player_killed)
 
-func new_run() -> void:
-	GhostManager.stop_recording()
+func new_run(player_killed := false) -> void:
+	GhostManager.stop_recording(player_killed)
 	level.queue_free()
 	level = LevelScene.instance()
 	connect_level_signals()
@@ -35,3 +39,4 @@ func new_run() -> void:
 func connect_level_signals() -> void:
 	level.connect("ready", self, "on_level_ready")
 	level.connect("player_looped", self, "new_run")
+	level.connect("player_killed", self, "on_player_killed")

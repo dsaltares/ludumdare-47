@@ -48,6 +48,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if state == States.IDLE:
+		if recording.killed_at_end:
+			queue_free()
+			return
+			
 		collision_layer = GHOSTS_LAYER
 		collision_mask = ENVIRONMENT_LAYER + PLAYER_LAYER + GHOSTS_LAYER
 

@@ -1,10 +1,6 @@
-* Death
-    * Player dying
-    * Recording death
-    * Ghosts disappear when recording says the player died
 * Juice
   * Camera shake
-  * Player animation when running/jumping/landing/dying
+  * Player/ghost animation when running/jumping/landing/dying
 * Traps/items
   * Spikes
     * Animated coming out of the ground

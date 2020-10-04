@@ -1,6 +1,8 @@
 extends KinematicBody
 class_name Player
 
+signal killed
+
 const MAX_RUNNING_SPEED := 10.0
 const MAX_FALLING_SPEED := 20.0
 const TIME_TO_MAX_SPEED := 0.1
@@ -16,12 +18,21 @@ var pressed_jump := false
 var snap_vec := Vector3.DOWN
 var was_grounded := false
 var jumping := false
+var dead := false
 
 onready var coyote_timer := $CoyoteTimer
 onready var turn_tween := $TurnTween
 onready var graphics := $Graphics
 
+func kill() -> void:
+	if not dead:
+		emit_signal("killed")
+		dead = true
+
 func _process(_delta: float) -> void:
+	if dead:
+		return
+		
 	last_move_dir = move_dir
 	move_dir = 0
 	if Input.is_action_pressed("move_right"):
