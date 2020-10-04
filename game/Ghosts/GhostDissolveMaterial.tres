@@ -3,14 +3,11 @@
 [ext_resource path="res://Effects/DissolveNoiseTexture.tres" type="Texture" id=1]
 [ext_resource path="res://Effects/DissolveShader.shader" type="Shader" id=2]
 
-
-
-
 [resource]
 shader = ExtResource( 2 )
 shader_param/albedo = Color( 0.827451, 0.596078, 1, 1 )
-shader_param/emission_color = Color( 1, 1, 1, 1 )
-shader_param/emission_amount = null
-shader_param/burn_size = null
+shader_param/emission_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+shader_param/emission_amount = 1.0
+shader_param/burn_size = 0.05
 shader_param/dissolve_amount = 0.0
 shader_param/dissolve_texture = ExtResource( 1 )

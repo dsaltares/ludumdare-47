@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/PlayerMaterial.tres" type="Material" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/PlayerNose.tres" type="CubeMesh" id=3]
 [ext_resource path="res://Player/PlayerBody.tres" type="CubeMesh" id=4]
 [ext_resource path="res://Player/PlayerCollisionShape.tres" type="Shape" id=5]
+[ext_resource path="res://LaserTurret/laser_hit_player.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/jump.wav" type="AudioStream" id=7]
+[ext_resource path="res://Player/appear.wav" type="AudioStream" id=8]
 
 [node name="Player" type="KinematicBody" groups=[
 "player",
@@ -43,3 +46,13 @@ wait_time = 1.5
 one_shot = true
 
 [node name="TurnTween" type="Tween" parent="."]
+
+[node name="DieSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="AppearSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true

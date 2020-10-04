@@ -1,10 +1,7 @@
 * Juice
   * Player/ghost animation when running/jumping/landing
 * Traps/items
-  * Spikes
-    * Animated coming out of the ground
   * Laser gun
-    * Animated shooting
     * Particles when impacting
   * Key pick up
   * Game exit door
@@ -24,9 +21,5 @@
   * End game screen?
 * Gamepad controls
 * Sound effects
-  * Jumping
-  * New time loop
   * Pick up key
   * Door opening/closing
-  * Laser shooting
-  * Laser hitting

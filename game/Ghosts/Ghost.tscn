@@ -24,4 +24,8 @@ material/0 = ExtResource( 2 )
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="DissolveTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="BecomeSolidTimer" to="." method="_on_BecomeSolidTimer_timeout"]
+[connection signal="timeout" from="DissolveTimer" to="." method="queue_free"]

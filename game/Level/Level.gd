@@ -7,7 +7,7 @@ signal loop_timeout
 
 onready var player := $Player
 onready var ghost_container := $Ghosts
-onready var exit_trigger := $ExitTrigger
+onready var loop_trigger := $LoopTrigger
 onready var loop_timer := $LoopTimer
 
 func _ready() -> void:
@@ -17,8 +17,8 @@ func _ready() -> void:
 		ghost_container.add_child(ghost)
 	
 	player.connect("killed", self, "on_player_killed")
-	exit_trigger.connect("player_entered", self, "on_player_entered")
-	exit_trigger.connect("ghost_entered", self, "on_ghost_entered")
+	loop_trigger.connect("player_entered", self, "on_player_entered")
+	loop_trigger.connect("ghost_entered", self, "on_ghost_entered")
 	loop_timer.connect("timeout", self, "on_loop_timer_timeout")
 	
 
