@@ -9,12 +9,12 @@ enum States {
 	Dying,
 }
 
-const MAX_RUNNING_SPEED := 10.0
-const MAX_FALLING_SPEED := 20.0
-const TIME_TO_MAX_SPEED := 0.1
-const JUMP_HEIGHT := 3.5
-const DISTANCE_TO_PEAK := 5.0
-const DISTANCE_AFTER_PEAK := 3.0
+export var MAX_RUNNING_SPEED := 10.0
+export var MAX_FALLING_SPEED := 20.0
+export var TIME_TO_MAX_SPEED := 0.1
+export var JUMP_HEIGHT := 3.5
+export var DISTANCE_TO_PEAK := 5.0
+export var DISTANCE_AFTER_PEAK := 3.0
 
 var move_dir := 0
 var last_move_dir := 0

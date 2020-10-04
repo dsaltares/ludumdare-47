@@ -38,9 +38,9 @@ func _physics_process(delta: float) -> void:
 	var weight = clamp(target_speed / max_distance_speed, 0.0, 1.0)
 	var distance = lerp(min_distance, max_distance, weight)
 	var camera_target_pos = Vector3(
-		target_pos.x,
-		target_pos.y + height,
-		target_pos.z + distance
+		clamp(target_pos.x, -9, 9),
+		20,
+		50
 	)
 	translation = translation.linear_interpolate(camera_target_pos, 0.075)
 	prev_target_pos = target_pos
