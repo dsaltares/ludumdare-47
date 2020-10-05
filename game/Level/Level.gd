@@ -27,7 +27,7 @@ func on_ghost_entered(ghost : Node) -> void:
 	ghost.queue_free()
 	
 func on_loop_timer_timeout() -> void:
-	emit_signal("loop_timeout")
+	player.kill()
 
 func dissolve_player() -> void:
 	player.dissolve()

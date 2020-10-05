@@ -54,7 +54,6 @@ func new_run(player_killed := false) -> void:
 func connect_level_signals() -> void:
 	level.connect("ready", self, "on_level_ready")
 	level.connect("player_looped", self, "new_run")
-	level.connect("loop_timeout", self, "new_run")
 
 func on_player_entered_exit_portal() -> void:
 	print("EXIT PORTAL")

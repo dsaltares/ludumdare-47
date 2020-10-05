@@ -26,12 +26,14 @@ func set_captured_keys(_captured_keys : int) -> void:
 	CapturedKeys.text = str(captured_keys)
 
 func update_timer(time_left):
-	TimeLeft.text = str(floor(time_left))
+	TimeLeft.text = str(ceil(time_left))
 	
-	if time_left > 6:
+	if time_left > 5:
 		flashing = false
+		TimeLeft.add_color_override("font_color", NORMAL_COLOR)
 	elif !flashing:
 		flash_and_tick()
+		
 		
 func flash_and_tick():
 	flashing = true
