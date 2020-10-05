@@ -14,6 +14,7 @@ func _ready() -> void:
 	EventBus.connect("story_done", self, "_change_scene", [GameScene])
 	EventBus.connect("player_won", self, "_change_scene", [GameOverScene])
 	EventBus.connect("game_over_done", self, "_change_scene", [MainMenuScene])
+	EventBus.connect("go_to_main_menu", self, "_change_scene", [MainMenuScene])
 	
 	_change_scene(MainMenuScene)
 

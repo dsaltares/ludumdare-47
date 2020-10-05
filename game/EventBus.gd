@@ -3,6 +3,7 @@ extends Node
 signal main_menu_done
 signal story_done
 signal game_over_done
+signal go_to_main_menu
 
 signal shake_requested
 signal player_kill_started
