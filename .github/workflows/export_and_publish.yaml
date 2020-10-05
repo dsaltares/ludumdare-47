@@ -36,7 +36,7 @@ jobs:
       - name: download build
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: chronoloopers-${{ matrix.platform }}.zip
+          file: chronolooper-${{ matrix.platform }}.zip
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: release build
@@ -44,6 +44,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: ${{ matrix.platform }}
-          ITCH_GAME: ludumdare-47
+          ITCH_GAME: chronolooper-47
           ITCH_USER: dsaltares
-          PACKAGE: chronoloopers-${{ matrix.platform }}.zip
+          PACKAGE: chronolooper-${{ matrix.platform }}.zip
