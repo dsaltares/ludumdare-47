@@ -17,6 +17,7 @@ const GHOSTS_LAYER = 4
 onready var become_solid_timer := $BecomeSolidTimer
 onready var dissolve_timer := $DissolveTimer
 onready var mesh := $Body
+onready var tween := $Tween
 
 var state = States.START
 var recording := Recording
@@ -27,6 +28,7 @@ var snap_vec := Vector3.ZERO
 func _ready() -> void:
 	collision_layer = 0
 	collision_mask = ENVIRONMENT_LAYER
+	mesh.set_surface_material(0, mesh.get_surface_material(0).duplicate())
 
 func init(_recording) -> void:
 	recording = _recording
@@ -42,6 +44,15 @@ func _physics_process(delta: float) -> void:
 		current_frame += 1
 		if current_frame >= recording.transforms.size():
 			state = States.IDLE
+			tween.interpolate_property(
+				mesh.get_surface_material(0),
+				"shader_param/alpha",
+				0.75, 1.0,
+				0.5,
+				Tween.TRANS_CUBIC,
+				Tween.EASE_IN_OUT
+			)
+			tween.start()
 		return
 
 	if state == States.IDLE:
@@ -71,8 +82,6 @@ func dissolve() -> void:
 func _on_BecomeSolidTimer_timeout() -> void:
 	if state == States.START:
 		state = States.PLAYING_RECORDING
-		collision_layer = GHOSTS_LAYER
-		collision_mask = ENVIRONMENT_LAYER + PLAYER_LAYER
 
 func _update_dissolve_amount() -> void:
 	var amount = 0.0
