@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/Alarm.glb" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "loop"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.0, 2.0 ]
+}
+
+[node name="Alarm" type="Spatial"]
+
+[node name="Alarm" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "loop"
+anims/loop = SubResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 1, 0.0823529, 0.0823529, 1 )
+light_energy = 2.0
