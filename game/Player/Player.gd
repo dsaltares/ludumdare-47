@@ -30,7 +30,7 @@ onready var appear_timer := $AppearTimer
 onready var die_timer := $DieTimer
 onready var turn_tween := $TurnTween
 onready var graphics := $Graphics
-onready var mesh := $Graphics/Body
+onready var mesh := $Graphics/character/rig/Skeleton/Cube
 onready var die_sfx := $DieSFX
 onready var dissolve_fx := $DissolveSFX
 onready var jump_sfx := $JumpSFX
@@ -88,14 +88,16 @@ func _physics_process(delta: float) -> void:
 	_update_look_dir()
 
 func _update_dissolve_amount() -> void:
-	var amount = 0.0
+	var amount = 1.0
 	
 	if state == States.Appearing:
-		amount = appear_timer.time_left / appear_timer.wait_time
+		amount = 1 - appear_timer.time_left / appear_timer.wait_time
 	elif state == States.Dying:
-		amount = 1 - die_timer.time_left / die_timer.wait_time
+		amount = die_timer.time_left / die_timer.wait_time
 
-	mesh.get_surface_material(0).set_shader_param("dissolve_amount", amount)
+	var material = mesh.get_surface_material(0)
+	material.set_shader_param("alpha", amount)
+	
 
 func _update_horizontal_velocity(delta : float) -> void:
 	if abs(move_dir) > 0.0:
