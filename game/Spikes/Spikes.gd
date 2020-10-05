@@ -1,12 +1,14 @@
 extends Spatial
 class_name Spikes
 
+export var start_idle := false
+export var idle_duration := 2.0
+
 onready var tween := $Tween
 onready var moving_parts := $MovingParts
 
 var hide_offset = Vector3.DOWN * 1.0
 var time := 0.5
-var idle_duration := 2.0
 
 func _ready() -> void:
 	init_tween()
@@ -32,7 +34,11 @@ func init_tween() -> void:
 		Tween.EASE_IN_OUT,
 		idle_duration * 2 + time
 	)
-	tween.start()
+	if !start_idle:
+		tween.start()
+	else:
+		$Timer.connect("timeout", tween, "start")
+		$Timer.start()
 
 
 func _on_Area_body_entered(body: Node) -> void:

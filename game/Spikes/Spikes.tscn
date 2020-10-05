@@ -77,4 +77,8 @@ material/0 = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 repeat = true
 playback/repeat = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="body_entered" from="MovingParts/Area" to="." method="_on_Area_body_entered"]

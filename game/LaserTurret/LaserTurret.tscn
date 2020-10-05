@@ -55,7 +55,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.757641, 1.27019, 0 )
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
