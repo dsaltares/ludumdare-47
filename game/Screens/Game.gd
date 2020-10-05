@@ -14,7 +14,6 @@ func _ready() -> void:
 	connect_level_signals()
 	EventBus.connect("player_kill_started", GhostManager, "pause_recording")
 	EventBus.connect("player_dissolve_started", GhostManager, "pause_recording")
-	EventBus.connect("player_entered_exit_portal", self, "on_player_entered_exit_portal")
 	EventBus.connect("player_killed", self, "on_player_killed")
 	EventBus.connect("player_dissolved", self, "new_run")
 	EventBus.connect("key_obtained", self, "on_key_obtained")
@@ -54,9 +53,6 @@ func new_run(player_killed := false) -> void:
 func connect_level_signals() -> void:
 	level.connect("ready", self, "on_level_ready")
 	level.connect("player_looped", self, "new_run")
-
-func on_player_entered_exit_portal() -> void:
-	print("EXIT PORTAL")
 
 func on_key_obtained() -> void:
 	gui.captured_keys += 1

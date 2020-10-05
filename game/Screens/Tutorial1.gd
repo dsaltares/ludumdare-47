@@ -7,7 +7,7 @@ func _on_timeout():
 	hide()
 
 func _on_first_button_pressed(body : KinematicBody):
-	if !showing and body.get_groups()[0] == "player":
+	if !showing and body.is_in_group("player"):
 		show()
 		showing = true
 		$Timer.start()
