@@ -3,7 +3,6 @@
 * Traps/items
   * Laser gun
     * Particles when impacting
-  * Key pick up
   * Game exit door
     * go to game end
 * Time loop door
@@ -20,5 +19,4 @@
   * End game screen?
 * Gamepad controls
 * Sound effects
-  * Pick up key
   * Door opening/closing
