@@ -4,7 +4,7 @@
 [ext_resource path="res://Screens/GameOver.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 300
+size = 200
 font_data = ExtResource( 1 )
 
 [node name="GameOver" type="ColorRect"]
@@ -23,10 +23,10 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -640.0
 margin_top = -360.0
-margin_right = 639.0
+margin_right = 643.0
 margin_bottom = 358.0
 custom_fonts/font = SubResource( 1 )
-text = "You win!!"
+text = "You escaped!"
 align = 1
 valign = 1
 __meta__ = {
