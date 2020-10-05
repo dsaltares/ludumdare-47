@@ -22,7 +22,10 @@ func _change_scene(NextScene) -> void:
 		yield(animation_player, "animation_finished")
 		current_scene.queue_free()
 	add_child(next_scene)
-	animation_player.play("fade_in")
+	if current_scene:
+		animation_player.play("fade_in")
+	else:
+		animation_player.play("fade_in", -1, 0.5)
 	yield(animation_player, "animation_finished")
 	current_scene = next_scene
 	next_scene = null
