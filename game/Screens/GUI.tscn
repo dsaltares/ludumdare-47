@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Screens/Kenney Rocket.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Screens/GUI.gd" type="Script" id=2]
 [ext_resource path="res://Assets/KeyCard.png" type="Texture" id=3]
+[ext_resource path="res://Assets/timer_ending.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -92,3 +93,10 @@ margin_bottom = 54.0
 custom_fonts/font = SubResource( 5 )
 text = "60"
 align = 2
+
+[node name="TickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "FX"
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.5

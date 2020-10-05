@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/timer_ended.wav-868be09e134ef528c726d54ba993f81d.sample"
+
+[deps]
+
+source_file="res://Assets/timer_ended.wav"
+dest_files=[ "res://.import/timer_ended.wav-868be09e134ef528c726d54ba993f81d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
