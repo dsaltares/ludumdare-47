@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Game",
 "language": "GDScript",
-"path": "res://David/Game.gd"
+"path": "res://Screens/Game.gd"
 }, {
 "base": "KinematicBody",
 "class": "Ghost",
@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ludum Dare 47"
-run/main_scene="res://David/DavidPlayground.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

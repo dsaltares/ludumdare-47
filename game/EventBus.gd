@@ -1,5 +1,7 @@
 extends Node
 
+signal main_menu_done
+
 signal shake_requested
 signal player_kill_started
 signal player_dissolve_started
