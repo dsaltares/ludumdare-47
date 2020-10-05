@@ -14,6 +14,7 @@ const TWEEN_DURATION := 0.5
 var interacted = false
 
 func _ready() -> void:
+	yield(get_parent(), "ready")
 	lights_off()
 	
 func lights_on() -> void:

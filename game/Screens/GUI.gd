@@ -8,7 +8,6 @@ onready var CapturedKeys := $HBoxContainer/Stats/CapturedKeys
 onready var TimeLeft := $HBoxContainer/Timer/TimeLeft
 onready var FlashTimer := $FlashTimer
 onready var TickPlayer := $TickPlayer
-onready var Buzzer := $Buzzer
 
 var total_keys = 0 setget set_total_keys
 var captured_keys = 0 setget set_captured_keys
