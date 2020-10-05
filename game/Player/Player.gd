@@ -187,6 +187,6 @@ func win() -> void:
 	var state_machine = animation_tree["parameters/playback"]
 	state_machine.travel("Celebrate")
 	win_sfx.play()
-
-func finish_win() -> void:
+	yield(get_tree().create_timer(3), "timeout")
 	EventBus.emit_signal("player_won")
+
