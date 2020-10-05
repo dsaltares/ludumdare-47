@@ -11,6 +11,7 @@ onready var ghost_container := $Ghosts
 onready var loop_timer := $LoopTimer
 
 func _ready() -> void:
+	EventBus.connect("player_entered_exit_portal", self, "on_player_entered_exit_portal")
 	GhostManager.set_player(player)
 	var ghosts = GhostManager.instance_ghosts()
 	for ghost in ghosts:
@@ -31,3 +32,6 @@ func on_loop_timer_timeout() -> void:
 
 func dissolve_player() -> void:
 	player.dissolve()
+
+func on_player_entered_exit_portal() -> void:
+	loop_timer.paused = true
