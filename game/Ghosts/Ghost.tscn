@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/PlayerCollisionShape.tres" type="Shape" id=1]
-[ext_resource path="res://Ghosts/GhostDissolveMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Effects/DissolveNoiseTexture.tres" type="Texture" id=2]
 [ext_resource path="res://Player/PlayerBody.tres" type="CubeMesh" id=3]
+[ext_resource path="res://Effects/DissolveShader.shader" type="Shader" id=4]
 [ext_resource path="res://Ghosts/Ghost.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/albedo = Color( 0.596078, 0.611765, 1, 1 )
+shader_param/emission_color = Color( 0.913725, 0.913725, 0.913725, 1 )
+shader_param/emission_amount = 1.0
+shader_param/burn_size = 0.05
+shader_param/dissolve_amount = 0.0
+shader_param/alpha = 0.75
+shader_param/dissolve_texture = ExtResource( 2 )
 
 [node name="Ghost" type="KinematicBody" groups=[
 "ghosts",
@@ -18,7 +29,7 @@ shape = ExtResource( 1 )
 [node name="Body" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = ExtResource( 3 )
-material/0 = ExtResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="BecomeSolidTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -27,5 +38,7 @@ autostart = true
 
 [node name="DissolveTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="timeout" from="BecomeSolidTimer" to="." method="_on_BecomeSolidTimer_timeout"]
 [connection signal="timeout" from="DissolveTimer" to="." method="queue_free"]

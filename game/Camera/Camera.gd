@@ -6,7 +6,6 @@ const EASE := Tween.EASE_IN_OUT
 export var min_distance := 48.0
 export var max_distance := 52.0
 export var max_distance_speed := 20.0
-export var height := 2.0
 export var camera_distance := 50
 export var max_yaw_shake := 3
 export var max_pitch_shake := 3
