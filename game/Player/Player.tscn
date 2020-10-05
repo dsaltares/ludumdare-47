@@ -94,19 +94,24 @@ one_shot = true
 
 [node name="DieSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+bus = "FX"
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+bus = "FX"
 
 [node name="AppearSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+bus = "FX"
 
 [node name="KeyPickupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "FX"
 
 [node name="DissolveSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+bus = "FX"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 12 )
