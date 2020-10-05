@@ -28,7 +28,7 @@ albedo_color = Color( 0.431373, 0.439216, 0.560784, 1 )
 script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8809, -0.265619, 0 )
 MAX_RUNNING_SPEED = 15.0
 MAX_FALLING_SPEED = 25.0
 TIME_TO_MAX_SPEED = 0.25
@@ -107,6 +107,12 @@ transform = Transform( 12, 0, 0, 0, 4.5, 0, 0, 0, 1, 42, 30.25, 0 )
 
 [node name="Floor15" parent="Environment/Floors" instance=ExtResource( 1 )]
 transform = Transform( 2, 0, 0, 0, 10, 0, 0, 0, 1, 15.4, 33, 0 )
+
+[node name="Floor16" parent="Environment/Floors" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 7.65295, 0, 0, 0, 1, 17.3321, 31.1581, 0 )
+
+[node name="Floor17" parent="Environment/Floors" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 4.12297, 0, 0, 0, 1, 19.2806, 29.8456, -0.0209618 )
 
 [node name="Keys" type="Spatial" parent="Environment"]
 
@@ -230,8 +236,8 @@ autostart = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 32.5, 0 )
 
 [node name="Tutorial1" parent="." instance=ExtResource( 12 )]
-[connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonPlatform1" to="Tutorial1" method="_on_first_button_pressed"]
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_activated"]
+[connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonPlatform1" to="Tutorial1" method="_on_first_button_pressed"]
 [connection signal="pressure_plate_deactivated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_deactivated"]
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonDoor1" to="Environment/Mechanisms/Door1" method="_on_pressure_plate_activated"]
 [connection signal="pressure_plate_deactivated" from="Environment/Mechanisms/ButtonDoor1" to="Environment/Mechanisms/Door1" method="_on_pressure_plate_deactivated"]

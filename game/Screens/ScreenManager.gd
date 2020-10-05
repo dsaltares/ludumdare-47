@@ -12,8 +12,9 @@ var next_scene = null
 func _ready() -> void:
 	EventBus.connect("main_menu_done", self, "_change_scene", [StoryScene])
 	EventBus.connect("story_done", self, "_change_scene", [GameScene])
-	EventBus.connect("player_entered_exit_portal", self, "_change_scene", [GameOverScene])
+	EventBus.connect("player_won", self, "_change_scene", [GameOverScene])
 	EventBus.connect("game_over_done", self, "_change_scene", [MainMenuScene])
+	EventBus.connect("go_to_main_menu", self, "_change_scene", [MainMenuScene])
 	
 	_change_scene(MainMenuScene)
 

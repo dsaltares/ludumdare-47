@@ -28,6 +28,9 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("new_run"):
 		level.dissolve_player()
+		
+	if Input.is_action_just_pressed("go_to_main_menu"):
+		EventBus.emit_signal("go_to_main_menu")
 
 func on_level_ready() -> void:
 	camera.set_target(level.player)

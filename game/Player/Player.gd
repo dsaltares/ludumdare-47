@@ -5,6 +5,7 @@ enum States {
 	Appearing,
 	Regular,
 	Dying,
+	Win,
 }
 
 export var MAX_RUNNING_SPEED := 10.0
@@ -36,6 +37,7 @@ onready var dissolve_fx := $DissolveSFX
 onready var jump_sfx := $JumpSFX
 onready var appear_sfx := $AppearSFX
 onready var key_pickup_sfx := $KeyPickupSFX
+onready var win_sfx := $WinSFX
 onready var animation_tree := $AnimationTree
 
 func kill() -> void:
@@ -57,6 +59,7 @@ func dissolve() -> void:
 
 func _ready() -> void:
 	EventBus.connect("key_obtained", self, "on_key_obtained")
+	EventBus.connect("player_entered_exit_portal", self, "win")
 	die_timer.connect("timeout", self, "on_die_timer_timeout")
 	appear_timer.connect("timeout", self, "on_appear_timer_timeout")
 	
@@ -79,7 +82,7 @@ func _process(_delta: float) -> void:
 		pressed_jump = true
 
 func _physics_process(delta: float) -> void:
-	if state == States.Dying:
+	if state == States.Dying or state == States.Win:
 		return
 		
 	_update_horizontal_velocity(delta)
@@ -178,3 +181,12 @@ func on_die_timer_timeout() -> void:
 
 func on_key_obtained() -> void:
 	key_pickup_sfx.play()
+
+func win() -> void:
+	state = States.Win
+	var state_machine = animation_tree["parameters/playback"]
+	state_machine.travel("Celebrate")
+	win_sfx.play()
+
+func finish_win() -> void:
+	EventBus.emit_signal("player_won")
