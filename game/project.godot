@@ -62,7 +62,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ludum Dare 47"
+config/name="Chronoloopers"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
