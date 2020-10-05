@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Screens/Kenney Rocket.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Screens/Tutorial1.gd" type="Script" id=2]
+[ext_resource path="res://Screens/Controls/XboxOne_B.png" type="Texture" id=3]
+[ext_resource path="res://Screens/Controls/PS4_Circle.png" type="Texture" id=4]
+[ext_resource path="res://Screens/Controls/N_Key_Light.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -14,10 +17,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -395.5
-margin_top = -30.0
+margin_top = -40.0
 margin_right = 395.5
 custom_fonts/font = SubResource( 1 )
-text = "Restart the loop (N) to create a clone"
+text = "Restart the loop (    ) to create a clone"
 align = 1
 script = ExtResource( 2 )
 __meta__ = {
@@ -26,4 +29,31 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Xbox" type="Node2D" parent="."]
+visible = false
+position = Vector2( 81, 62 )
+
+[node name="Loop" type="Sprite" parent="Xbox"]
+position = Vector2( 317.5, -46.2 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="PC" type="Node2D" parent="."]
+visible = false
+position = Vector2( 81.8713, 62.1345 )
+
+[node name="Loop" type="Sprite" parent="PC"]
+position = Vector2( 317.5, -46.2 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="PS4" type="Node2D" parent="."]
+visible = false
+position = Vector2( 81, 62 )
+
+[node name="Loop" type="Sprite" parent="PS4"]
+position = Vector2( 317.5, -46.2 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
