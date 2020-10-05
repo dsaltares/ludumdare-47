@@ -19,9 +19,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	EventBus.emit_signal("loop_timer_updated", loop_timer.time_left)
-	
-	if Input.is_action_just_pressed("kill"):
-		player.kill()
 
 func on_player_entered() -> void:
 	emit_signal("player_looped")
