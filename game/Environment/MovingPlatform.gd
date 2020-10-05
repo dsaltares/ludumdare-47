@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 	translation = translation.linear_interpolate(follow, 0.075)
 
 func _on_pressure_plate_activated(body : KinematicBody):
-	print("pressure plate triggered")
 	tween.resume_all()
 
 func _on_pressure_plate_deactivated(body : KinematicBody):
