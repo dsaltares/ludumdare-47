@@ -25,10 +25,10 @@ func pause_recording() -> void:
 	recording = false
 	
 func stop_recording(player_killed : bool) -> void:
-	player_recording.killed_at_end = player_killed
-	ghost_recordings.append(player_recording)
-	player_recording = Recording.new()
-	recording = false
+	if !player_killed:
+		ghost_recordings.append(player_recording)
+		player_recording = Recording.new()
+		recording = false
 	
 func instance_ghosts() -> Array:
 	var ghosts = []
