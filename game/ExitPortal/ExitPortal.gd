@@ -1,5 +1,7 @@
 extends Spatial
 
+export var NUM_REQUIRED_KEYS := 1
+
 onready var light_left := $Graphics/PillarLeft/LightLeft
 onready var light_right := $Graphics/PillarRight/LightRight
 onready var back := $Graphics/Back
@@ -7,7 +9,6 @@ onready var right_light_tween := $RightLightTween
 onready var left_light_tween := $LeftLightTween
 onready var player_interact_area := $PlayerInteractArea
 
-const NUM_REQUIRED_KEYS := 1
 const OPEN_COLOR := Color.greenyellow
 const CLOSED_COLOR := Color.red
 const TWEEN_DURATION := 0.5
