@@ -39,6 +39,6 @@ func instance_ghosts() -> Array:
 	return ghosts
 	
 func _physics_process(delta: float) -> void:
-	if not recording:
+	if not recording or not player:
 		return
 	player_recording.record(player.global_transform)

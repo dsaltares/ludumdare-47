@@ -36,6 +36,7 @@ onready var dissolve_fx := $DissolveSFX
 onready var jump_sfx := $JumpSFX
 onready var appear_sfx := $AppearSFX
 onready var key_pickup_sfx := $KeyPickupSFX
+onready var animation_tree := $AnimationTree
 
 func kill() -> void:
 	if state != States.Dying:
@@ -106,6 +107,11 @@ func _update_horizontal_velocity(delta : float) -> void:
 		var max_speed = velocity.x if prev_move_dir > 0.0 else 0.0
 		velocity.x -= prev_move_dir * (MAX_RUNNING_SPEED/TIME_TO_MAX_SPEED) * delta
 		velocity.x = clamp(velocity.x, min_speed, max_speed)
+		
+	if is_on_floor():
+		var ground_anim := "Idle" if abs(move_dir) == 0 else "Run" 
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel(ground_anim)
 
 func _update_vertical_velocity(delta : float) -> void:
 	var grounded := is_on_floor()
@@ -120,6 +126,8 @@ func _update_vertical_velocity(delta : float) -> void:
 		coyote_timer.stop()
 		jumping = true
 		jump_sfx.play()
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel("Jump")
 	elif not grounded:
 		var jump_section_distance = DISTANCE_TO_PEAK if velocity.y > 0.0 else DISTANCE_AFTER_PEAK
 		gravity = -2 * JUMP_HEIGHT * pow(MAX_RUNNING_SPEED, 2) / pow(jump_section_distance, 2)
