@@ -223,7 +223,6 @@ autostart = true
 
 [node name="ExitPortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 32.5, 0 )
-NUM_REQUIRED_KEYS = 3
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_activated"]
 [connection signal="pressure_plate_deactivated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_deactivated"]
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonDoor1" to="Environment/Mechanisms/Door1" method="_on_pressure_plate_activated"]

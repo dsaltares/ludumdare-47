@@ -5,6 +5,9 @@ onready var LevelScene := preload("res://Level/Level.tscn")
 onready var level := $Level
 onready var camera := $Camera
 
+var total_keys := 0
+var captured_keys := 0
+
 func _ready() -> void:
 	camera.set_target(level.player)
 	GhostManager.start_recording()
@@ -14,6 +17,9 @@ func _ready() -> void:
 	EventBus.connect("player_entered_exit_portal", self, "on_player_entered_exit_portal")
 	EventBus.connect("player_killed", self, "on_player_killed")
 	EventBus.connect("player_dissolved", self, "new_run")
+	EventBus.connect("key_obtained", self, "on_key_obtained")
+	
+	total_keys = level.TOTAL_KEYS
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -39,9 +45,15 @@ func on_player_killed() -> void:
 
 func new_run(player_killed := false) -> void:
 	GhostManager.stop_recording(player_killed)
+	
 	level.queue_free()
 	level = LevelScene.instance()
+	
 	connect_level_signals()
+	
+	total_keys = level.TOTAL_KEYS
+	captured_keys = 0
+	
 	add_child(level)
 
 func connect_level_signals() -> void:
@@ -51,3 +63,6 @@ func connect_level_signals() -> void:
 
 func on_player_entered_exit_portal() -> void:
 	print("EXIT PORTAL")
+
+func on_key_obtained() -> void:
+	captured_keys += 1

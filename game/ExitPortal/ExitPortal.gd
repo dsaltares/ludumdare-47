@@ -1,7 +1,5 @@
 extends Spatial
 
-export var NUM_REQUIRED_KEYS := 1
-
 onready var light_left := $Graphics/PillarLeft/LightLeft
 onready var light_right := $Graphics/PillarRight/LightRight
 onready var back := $Graphics/Back
