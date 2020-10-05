@@ -44,6 +44,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: ${{ matrix.platform }}
-          ITCH_GAME: chronoloopers
+          ITCH_GAME: ludumdare-47
           ITCH_USER: dsaltares
           PACKAGE: chronoloopers-${{ matrix.platform }}.zip

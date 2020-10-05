@@ -16,12 +16,10 @@ func _ready() -> void:
 	for ghost in ghosts:
 		ghost_container.add_child(ghost)
 	
-#	loop_trigger.connect("player_entered", self, "on_player_entered")
-#	loop_trigger.connect("ghost_entered", self, "on_ghost_entered")
-#	loop_timer.connect("timeout", self, "on_loop_timer_timeout")
-	
 
 func _process(delta: float) -> void:
+	EventBus.emit_signal("loop_timer_updated", loop_timer.time_left)
+	
 	if Input.is_action_just_pressed("kill"):
 		player.kill()
 

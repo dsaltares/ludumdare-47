@@ -4,8 +4,8 @@ class_name Game
 onready var LevelScene := preload("res://Level/Level.tscn")
 onready var level := $Level
 onready var camera := $Camera
+onready var gui := $GUI
 
-var total_keys := 0
 var captured_keys := 0
 
 func _ready() -> void:
@@ -19,7 +19,8 @@ func _ready() -> void:
 	EventBus.connect("player_dissolved", self, "new_run")
 	EventBus.connect("key_obtained", self, "on_key_obtained")
 	
-	total_keys = level.TOTAL_KEYS
+	gui.total_keys = level.TOTAL_KEYS
+	gui.captured_keys = 0
 	
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
@@ -51,8 +52,8 @@ func new_run(player_killed := false) -> void:
 	
 	connect_level_signals()
 	
-	total_keys = level.TOTAL_KEYS
-	captured_keys = 0
+	gui.total_keys = level.TOTAL_KEYS
+	gui.captured_keys = 0
 	
 	add_child(level)
 
@@ -65,4 +66,4 @@ func on_player_entered_exit_portal() -> void:
 	print("EXIT PORTAL")
 
 func on_key_obtained() -> void:
-	captured_keys += 1
+	gui.captured_keys += 1
