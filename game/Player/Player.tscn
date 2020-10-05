@@ -102,6 +102,7 @@ bus = "FX"
 
 [node name="AppearSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -8.78
 autoplay = true
 bus = "FX"
 

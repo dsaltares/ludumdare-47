@@ -64,5 +64,5 @@ shape = SubResource( 5 )
 
 [node name="LaserSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 3 )
-unit_db = 10.0
+unit_db = 19.74
 bus = "FX"
