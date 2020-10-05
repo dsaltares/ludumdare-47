@@ -4,6 +4,8 @@ class_name Level
 signal player_looped
 signal loop_timeout
 
+const TOTAL_KEYS := 3
+
 onready var player := $Player
 onready var ghost_container := $Ghosts
 onready var loop_timer := $LoopTimer

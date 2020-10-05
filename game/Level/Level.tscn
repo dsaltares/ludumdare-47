@@ -27,7 +27,7 @@ albedo_color = Color( 0.431373, 0.439216, 0.560784, 1 )
 script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.6785, 0.568453, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 0 )
 MAX_RUNNING_SPEED = 15.0
 MAX_FALLING_SPEED = 25.0
 TIME_TO_MAX_SPEED = 0.25
@@ -103,6 +103,9 @@ transform = Transform( 33.6, 0, 0, 0, 2, 0, 0, 0, 1, 31.2, 27, 0 )
 
 [node name="Floor14" parent="Environment/Floors" instance=ExtResource( 1 )]
 transform = Transform( 12, 0, 0, 0, 4.5, 0, 0, 0, 1, 42, 30.25, 0 )
+
+[node name="Floor15" parent="Environment/Floors" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 10, 0, 0, 0, 1, 15.4, 33, 0 )
 
 [node name="Keys" type="Spatial" parent="Environment"]
 
@@ -223,7 +226,6 @@ autostart = true
 
 [node name="ExitPortal" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 32.5, 0 )
-NUM_REQUIRED_KEYS = 3
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_activated"]
 [connection signal="pressure_plate_deactivated" from="Environment/Mechanisms/ButtonPlatform1" to="Environment/Mechanisms/Platform1" method="_on_pressure_plate_deactivated"]
 [connection signal="pressure_plate_activated" from="Environment/Mechanisms/ButtonDoor1" to="Environment/Mechanisms/Door1" method="_on_pressure_plate_activated"]
